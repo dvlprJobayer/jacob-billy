@@ -8,7 +8,7 @@ const Service = ({ service }) => {
     return (
         <div className='col-lg-4 service'>
             <img src={picture} alt="" />
-            <h3>{name}</h3>
+            <h4>{name}</h4>
             <div className='text-center service-des'>
                 <p>{desc1}</p>
                 <p>{desc2}</p>
@@ -16,7 +16,7 @@ const Service = ({ service }) => {
                 <p>{desc4}</p>
                 <p>{desc5}</p>
             </div>
-            <h4 className='text-center my-3'>Price: <span>${balance}</span></h4>
+            <h5 className='text-center my-3'>Price: <span>${balance}</span></h5>
             <div className='text-center'>
                 <button className='btn btn-lg'>Book Now</button>
             </div>
