@@ -4,6 +4,7 @@ import auth from '../../firebase/firebase.init';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import SocialLogin from '../SocialLogin/SocialLogin';
+import Loading from '../Loading/Loading';
 
 const SignUp = () => {
 
@@ -82,10 +83,13 @@ const SignUp = () => {
     const from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
+        if (loading) {
+            <Loading />
+        }
         if (user) {
             navigate(from, { replace: true });
         }
-    }, [user]);
+    }, [user, loading]);
 
     return (
         <div className='card mx-auto mt-5 p-5 shadow form'>

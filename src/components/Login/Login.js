@@ -5,6 +5,7 @@ import { AiOutlineExclamationCircle } from "react-icons/ai";
 import auth from '../../firebase/firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './Login.css';
+import Loading from '../Loading/Loading';
 
 const Login = () => {
 
@@ -56,7 +57,7 @@ const Login = () => {
         e.preventDefault();
 
         if (userInfo.email && userInfo.password) {
-            signInWithEmailAndPassword(userInfo.email, setUserInfo.password);
+            signInWithEmailAndPassword(userInfo.email, userInfo.password);
         }
     }
 
@@ -66,10 +67,13 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
+        if (loading) {
+            <Loading />
+        }
         if (user) {
             navigate(from, { replace: true });
         }
-    }, [user]);
+    }, [user, loading]);
 
     return (
         <div className='card mx-auto mt-5 p-5 shadow form'>
