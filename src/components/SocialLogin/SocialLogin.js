@@ -4,6 +4,7 @@ import { FaTwitter } from "react-icons/fa";
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase/firebase.init';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Loading from '../Loading/Loading';
 
 const SocialLogin = () => {
 
@@ -15,10 +16,13 @@ const SocialLogin = () => {
     const from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
+        if (loading) {
+            <Loading />
+        }
         if (user) {
             navigate(from, { replace: true });
         }
-    }, [user]);
+    }, [user, loading]);
 
     return (
         <div className='social'>
