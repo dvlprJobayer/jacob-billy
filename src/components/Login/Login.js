@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import auth from '../../firebase/firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './Login.css';
 import Loading from '../Loading/Loading';
+import toast from 'react-hot-toast';
 
 const Login = () => {
 
@@ -24,6 +25,8 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
     const emailOnChange = e => {
         const emailInput = e.target.value;
@@ -61,13 +64,20 @@ const Login = () => {
         }
     }
 
+    const resetPassword = async () => {
+        if (userInfo.email) {
+            await sendPasswordResetEmail(userInfo.email);
+            toast.success('Sent password on your email', { id: 'reset' });
+        }
+    }
+
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
-        if (loading) {
+        if (loading || sending) {
             <Loading />
         }
         if (user) {
@@ -91,6 +101,7 @@ const Login = () => {
             </form>
             {error && <p className='text-danger mb-0 mt-3'>{error.message}</p>}
             <p className='my-2 fs-5 fw-light text-center'>New to Jacob Billy? <Link style={{ color: '#83b735' }} to='/signup'>Create New Account</Link></p>
+            <p className='my-2 fs-5 fw-light text-center'>Forget Password? <span onClick={resetPassword} style={{ color: '#83b735', cursor: 'pointer', textDecoration: 'underline' }} >Reset Password</span></p>
             <SocialLogin />
         </div>
     );

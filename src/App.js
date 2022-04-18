@@ -11,11 +11,13 @@ import Footer from './components/Footer/Footer';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import Checkout from './components/Checkout/Checkout';
 import NotFound from './components/NotFound/NotFound';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
     return (
         <>
             <Header />
+            <Toaster />
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/blog' element={<Blog />} />
