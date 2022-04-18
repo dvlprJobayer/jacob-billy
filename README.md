@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Project Name: Jacob Billy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Live Project: [https://jacob-billy.web.app/](https://jacob-billy.web.app/).
 
 ## Available Scripts
 
