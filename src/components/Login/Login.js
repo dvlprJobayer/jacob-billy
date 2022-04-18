@@ -83,10 +83,10 @@ const Login = () => {
         if (user) {
             navigate(from, { replace: true });
         }
-    }, [user, loading]);
+    }, [user, loading, from, navigate, sending]);
 
     return (
-        <div className='card mx-auto mt-5 p-5 shadow form'>
+        <div className='card mx-auto my-5 p-md-5 p-4 shadow form'>
             <h1 className='fw-normal text-center mb-4'>Login</h1>
             <form onSubmit={handleLogin}>
                 <div className="mb-4">

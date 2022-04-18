@@ -30,3 +30,15 @@
 .social .or-text {
     color: #83b735;
 }
+
+@media screen and (max-width: 768px) {
+    .form {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .form {
+        width: 90%;
+    }
+}

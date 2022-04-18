@@ -56,7 +56,6 @@ const SignUp = () => {
 
     const confirmPassOnChange = e => {
         const confirmPasswordInput = e.target.value;
-        console.log(confirmPasswordInput, userInfo.password);
         if (confirmPasswordInput === '') {
             setUserError({ ...userError, confirmPassword: 'Confirm Password is required' });
             setUserInfo({ ...userInfo, confirmPassword: '' });
@@ -89,10 +88,10 @@ const SignUp = () => {
         if (user) {
             navigate(from, { replace: true });
         }
-    }, [user, loading]);
+    }, [user, loading, from, navigate]);
 
     return (
-        <div className='card mx-auto mt-5 p-5 shadow form'>
+        <div className='card mx-auto my-5 p-md-5 p-4 shadow form'>
             <h1 className='fw-normal text-center mb-4'>Sign up</h1>
             <form onSubmit={handleRegister}>
                 <div className="mb-4">
