@@ -33,7 +33,6 @@ const SocialLogin = () => {
             </div>
             <button onClick={() => signInWithGoogle()} className='btn btn-lg w-100 fs-4 mb-4 d-flex align-items-center justify-content-center'><FcGoogle /> <p style={{ width: '95%' }} className='mb-1'>Continue with Google</p></button>
             <p className='text-danger'>{error && error.message}</p>
-            <button className='btn btn-lg w-100 fs-4 d-flex align-items-center justify-content-center'><FaTwitter /> <p style={{ width: '95%' }} className='mb-1'>Continue with Twitter</p></button>
         </div>
     );
 };
